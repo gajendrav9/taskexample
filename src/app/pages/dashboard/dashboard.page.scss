@@ -1,0 +1,45 @@
+.card  {
+    // background-color: #0B4D8A; // black
+    //background-color: #556B2F; // black #5e8025
+
+     background-color: white;
+     border-radius : 8px;
+     width: 45%;
+     margin: 4px;
+     height: 110px;
+     text-align:center; 
+     position: relative;
+     display: flex;
+    justify-content: center;
+    box-shadow: 0 12px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   }
+
+   .picture {
+    
+    width: 48px;
+    height: 48px;
+   
+    text-align: center;
+    margin-top: 2px;
+   
+  }
+
+  .toolbar{
+    --background:#03497d;
+}
+
+ion-title
+{
+  color: #ffffff;
+  font-size: 14px;
+}
+
+ion-icon
+{
+  color: #ffffff;
+}
+ion-menu-button
+{
+  color: #ffffff;
+}
+

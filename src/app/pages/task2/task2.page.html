@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar class="toolbar"> 
+    <ion-buttons slot="start"  routerLink="/dashboard" routerDirection="backward" >
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+  </ion-buttons>
+  <ion-title>Visitor List</ion-title> 
+ 
+</ion-toolbar>
+</ion-header>
+
+
+<ion-content style="--background: #EEEEEE">
+
+  
+  <div >
+
+  
+    <ion-card  *ngFor="let card of itemlist; let i = index" >
+
+      <ion-grid class="no-padding">
+        <ion-row>
+          <ion-col size="1">
+            <h2 class="title">#</h2>
+              <p class="subtitle">{{i+1}}</p>   
+          </ion-col>
+          <ion-col>
+            <h2 class="title">Name</h2>
+            <p class="subtitle">{{card.name}}</p>
+          </ion-col>
+          <ion-col >
+            <h2 class="title">Email</h2>
+            <h2 class="subtitle">{{card.email}}</h2>  
+          </ion-col>
+         
+        
+        </ion-row>
+        
+        <ion-row>
+          <ion-col >
+            <h2 class="title">Type Of Visit</h2> 
+            <h2 class="subtitle">{{card.typeOfVisit}}</h2>  
+          </ion-col>
+          <ion-col >
+            <h2 class="title">Person To Visit</h2> 
+            <h2 class="subtitle">{{card.personToVisit}}</h2>  
+          </ion-col>
+  
+        </ion-row>
+      <ion-row>
+        <ion-col >
+          <h2 class="title">Date Of Entry</h2>
+          <h2 class="subtitle">{{card.dateOfEntry}}</h2>  
+        </ion-col>
+        <ion-col >
+          <h2 class="title">Time Of Entry</h2>
+          <h2 class="subtitle">{{card.timeOfEntry}}</h2>  
+        </ion-col>
+        <ion-col >
+          <h2 class="title">Time Of Exit</h2>
+          <h2 class="subtitle">{{card.timeOfExit}}</h2>  
+        </ion-col>
+
+      </ion-row>
+      </ion-grid>
+    
+     
+    </ion-card>
+
+    <ion-card style="padding-top: 16px; padding-bottom: 16px;" *ngIf="itemlist.length==0" >
+
+      <ion-grid class="no-padding">
+        <ion-row>
+         <div style="text-align: center;width:100%;">
+           No List Item Found !
+         </div>    
+        </ion-row>
+      </ion-grid>
+     
+    </ion-card>
+   
+  </div>
+
+  
+ 
+</ion-content>
+

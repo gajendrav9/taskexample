@@ -1,0 +1,68 @@
+<ion-header>
+  
+    <ion-toolbar class="toolbar"> 
+      <ion-buttons slot="start"  routerLink="/dashboard" routerDirection="backward" >
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Example 1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  style="--background: #EEEEEE">
+  <div class="ion-padding">
+    <form [formGroup]="form" (ngSubmit)="saveDetails(form.value)">
+      <ion-list>
+        <ion-item margin-bottom>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="name" ></ion-input>
+        </ion-item>
+
+        <ion-item margin-bottom>
+          <ion-label position="floating">Email address</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item margin-bottom>
+          <ion-label position="floating">Type Of Visit</ion-label>
+          <ion-select formControlName="typeOfVisit">
+            <ion-select-option value="Meeting">Meeting</ion-select-option>
+            <ion-select-option value="Delivery">Delivery</ion-select-option>
+            <ion-select-option value="Personal">Personal</ion-select-option>
+           
+          </ion-select>
+        </ion-item>
+
+        <ion-item margin-bottom>
+          <ion-label position="floating">Person To Visit</ion-label>
+          <ion-input type="text" formControlName="personToVisit"></ion-input>
+        </ion-item>
+        
+        <ion-item margin-bottom>
+          <ion-label position="floating">Date Of Entry</ion-label>
+          <ion-input readonly type="text" formControlName="dateOfEntry"></ion-input>
+        </ion-item>
+        <ion-item margin-bottom>
+          <ion-label position="floating">Time Of Entry</ion-label>
+          <!-- <ion-input type="text" formControlName="timeOfEntry"></ion-input> -->
+          <ion-datetime formControlName="timeOfEntry" displayFormat="HH:mm" pickerFormat="HH:mm"
+                  ></ion-datetime>
+        </ion-item>
+        <ion-item margin-bottom>
+          <ion-label position="floating">Time Of Exit</ion-label>
+          <!-- <ion-input type="text" formControlName="timeOfExit"></ion-input> -->
+          <ion-datetime formControlName="timeOfExit" displayFormat="HH:mm" pickerFormat="HH:mm"
+                  ></ion-datetime>
+        </ion-item>
+      </ion-list>
+    </form>
+   
+  </div>
+</ion-content>
+<ion-footer>
+ 
+  <div style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="submit()" > <ion-icon  name="checkmark"></ion-icon>Submit</button>
+  </div>
+
+   
+
+</ion-footer>

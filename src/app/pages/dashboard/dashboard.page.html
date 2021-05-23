@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+  </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true" style="--background: #EEEEEE"  >
+  <ion-grid  >  
+ <ion-row class="ion-justify-content-center" >
+        <div class="card"  *ngFor="let p of appPagesDashboard; let i = index" (click)="openPage(p)" routerDirection="forward">     
+            <ion-grid >
+              <div class="row">
+                <div class="col">
+                   <img class="picture" src={{p.icon}}>
+                   <p class="card-discription">{{p.title}}</p> 
+                </div>
+              </div>
+            
+            </ion-grid>   
+ </div>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer *ngIf="profiletype=='1'">
+ 
+  <ion-grid class="gridfooter">
+    <div class="divder">
+           
+    </div> 
+   
+  
+    <ion-row>
+  
+  <ion-col (click)="bottomseller('1')" size="3"><div style="display: block;
+    justify-content: center;
+    width: 100%;">
+    <img style="margin-left: 8px;" src="assets/imgs/faq.svg" class="img-logo"/>
+    
+  </div>
+   
+  </ion-col>
+  <ion-col (click)="bottomseller('3')" size="3">
+    <img style="margin-left: 8px;" src="assets/imgs/orderhistory.svg" />
+   
+  </ion-col>
+  <ion-col (click)="bottomseller('4')" size="3">
+    <img style="margin-left: 8px;" src="assets/imgs/listnew.svg" c/>
+    
+  </ion-col>
+  <ion-col (click)="bottomseller('2')" size="3">
+    <img style="margin-left: 8px;" src="assets/imgs/contactus.svg" />
+   
+  </ion-col>
+
+ 
+    </ion-row>
+  </ion-grid>
+</ion-footer> 

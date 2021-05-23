@@ -1,0 +1,46 @@
+<ion-header>
+  
+    <ion-toolbar class="toolbar"> 
+      <ion-buttons slot="start"  routerLink="/dashboard" routerDirection="backward" >
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Example 3</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  style="--background: #EEEEEE">
+  <ion-card *ngFor="let card of listData; let i = index" no-padding>
+      <ion-grid class="no-padding">
+        <ion-row>
+          <ion-col>
+            <h2 class="title">{{card.title}}</h2>
+            <p class="title3">{{getTimeAMPMFormat(card.publishedAt)}} / Author :{{card.author}} </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">
+            <img [src]="card.urlToImage"  />
+          </ion-col>
+          <ion-col>
+            <p class="title2">{{card.description}}</p>
+          </ion-col>
+         
+        
+        </ion-row>
+        <ion-row>
+          <ion-col >
+            <p class="title2">{{card.content}}</p>
+          </ion-col>
+         
+        </ion-row>
+      </ion-grid>
+     
+      
+      
+  
+  </ion-card>
+  
+  <ion-item *ngIf="listData.length==0">
+    No Information Available ! 
+  </ion-item>
+</ion-content>
