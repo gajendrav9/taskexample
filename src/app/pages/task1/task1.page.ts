@@ -14,6 +14,9 @@ export class Task1Page implements OnInit {
   tempSubmit:visitorInfo=new visitorInfo();
   today: string = new Date().toISOString();
 
+  diffHours:Number=0;
+  diffMinut:Number=0;
+
   constructor(private fb: FormBuilder,public storageService:StorageService,private toastCtrl: ToastController,) { 
     this.forminit();
   }
@@ -33,6 +36,59 @@ export class Task1Page implements OnInit {
   }
 
   ngOnInit() {
+  }
+  public inputValidator(event: any) {
+    console.log(event.target.value);
+    //const pattern = /^[a-zA-Z0-9]*$/;  
+    const pattern = /^[a-zA-Z? ]*$/;   
+    //let inputChar = String.fromCharCode(event.charCode)
+    if (!pattern.test(event.target.value)) {
+      event.target.value = event.target.value.replace(/[^a-zA-Z]/g, "");
+      // invalid character, prevent input
+  
+    }
+  }
+  validsubmit()
+  {
+    if(this.form.get('name').value=='')
+    {
+      alert('Please Fill Visitor Name');
+    }else if(this.form.get('email').value=='')
+    {
+      alert('Please Fill Visitor Email');
+    }else if(this.form.get('typeOfVisit').value=='')
+    {
+      alert('Please Select type of visit');
+    }
+    else if(this.form.get('personToVisit').value=='')
+    {
+      alert('Please Fill person to visit');
+    }
+    else if(this.form.get('timeOfEntry').value=='')
+    {
+      alert('Please Select time of Entry');
+    }else if(this.form.get('timeOfExit').value=='')
+    {
+      alert('Please Select time of Exit');
+    }else{
+      let diff = moment(this.form.get('timeOfExit').value, 'HH:mm').diff(moment(this.form.get('timeOfEntry').value, 'HH:mm'));
+      
+    let d = moment.duration(diff);
+    let hours =  Math.floor(d.asHours());
+    let minutes = parseInt(moment.utc(diff).format("mm"));
+    console.log('hour'+hours+'minu'+minutes);
+    let totaltime =Math.floor(d.asHours()) + moment.utc(diff).format(":mm");
+   // alert(totaltime)
+    if(Math.sign(hours)> -1 && Math.sign(minutes)>-1){
+     console.log(Math.sign(hours)+'rer'+ Math.sign(minutes));
+     this.submit();
+    }else 
+    {
+      console.log(Math.sign(hours)+'rer'+ Math.sign(minutes))
+     alert("Please Select Exit time proper")
+    }
+     // this.submit();
+    }
   }
 
   submit()

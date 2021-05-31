@@ -14,7 +14,7 @@
       <ion-list>
         <ion-item margin-bottom>
           <ion-label position="floating">Name</ion-label>
-          <ion-input type="text" formControlName="name" ></ion-input>
+          <ion-input  (input)="inputValidator($event)"  type="text" formControlName="name" ></ion-input>
         </ion-item>
 
         <ion-item margin-bottom>
@@ -34,7 +34,7 @@
 
         <ion-item margin-bottom>
           <ion-label position="floating">Person To Visit</ion-label>
-          <ion-input type="text" formControlName="personToVisit"></ion-input>
+          <ion-input  (input)="inputValidator($event)"  type="text" formControlName="personToVisit"></ion-input>
         </ion-item>
         
         <ion-item margin-bottom>
@@ -60,7 +60,7 @@
 </ion-content>
 <ion-footer>
  
-  <div style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="submit()" > <ion-icon  name="checkmark"></ion-icon>Submit</button>
+  <div style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="validsubmit()" > <ion-icon  name="checkmark"></ion-icon>Submit</button>
   </div>
 
    
