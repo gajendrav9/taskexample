@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar class="toolbar"> 
+    <ion-buttons slot="start"  routerLink="/task4" routerDirection="backward" >
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+  </ion-buttons>
+  <ion-title>Product Detail </ion-title> 
+ 
+</ion-toolbar>
+</ion-header>
+
+<ion-content  style="--background: #EEEEEE" >
+  <ion-card  no-padding>
+    <ion-img style="height:100px" src="assets/icon/list.svg"></ion-img>
+      <ion-grid class="no-padding">
+        <ion-row>
+          <ion-col>
+            <h2 class="title">{{productDetail.ProductName}}</h2>
+            <p class="title3">{{productDetail.Category}} </p>
+          </ion-col>
+        </ion-row>
+       
+      </ion-grid>
+  </ion-card>
+</ion-content>

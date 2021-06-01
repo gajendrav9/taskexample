@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 })
 export class StorageService {
   itmeList:any[]=[];
+  pointCollectList:any[]=[];
   constructor(private storage: Storage)
    {
     console.log('Your storage provider is working here !');
@@ -53,21 +54,84 @@ async setObject(key: string, object: Object) {
   }
 
   
-   // set a key/value object
-async setCartObject(cart:any): Promise<any> {
+       // set a key/value object
+async setCollectItem(cart:any,maxcountA:Number): Promise<any> {
   try {
-
- 
-
-   
-   console.log("333",JSON.stringify(this.itmeList));
-  return this.itmeList.length;
+    if(this.pointCollectList.length==0)
+    {
+      this.pointCollectList.push(cart);
+      console.log("1",this.pointCollectList);
+      return true;
+    }else
+    {
+      const CategoryCount= this.pointCollectList.filter(e=>e.MainCategory==cart.MainCategory).length;
+      if(maxcountA>CategoryCount)
+      {
+         //return this.addNewPoint(cart).;
+        // return true;
+        return  this.addNewPoint(cart).then((value) => {
+           console.log(value);
+         return value;
+         });
+      }else
+      {
+        return false;
+      }
+      console.log(CategoryCount);
+     
+     
+    }
   } catch (reason) {
   console.log(reason);
-  return this.itmeList.length;
+  return false;
   }
   }
 
+  async getitemcount() {
+    try {
+  
+      console.log("count",this.pointCollectList.length);
+     
+      if (this.pointCollectList.length != 0) {
+        let total=0;
+        for(let k=0;k<this.pointCollectList.length;k++)
+        {
+          total+=parseInt(this.pointCollectList[k].Points);
+        }
+        console.log("333",total);
+        return total;
+        
+        }
+    
+    return 0;
+    } catch (reason) {
+    console.log(reason);
+    return 0;
+    }
+    }
+
+ public  async addNewPoint(cart)
+  {
+    let added = false;
+    for(let k=0;k<this.pointCollectList.length;k++)
+    {
+      if(this.pointCollectList[k].ProductID==cart.ProductID)
+      {
+      
+       added=true;
+       break;
+      }
+      
+    }
+    if (!added) {
+      console.log("4",this.pointCollectList);
+      this.pointCollectList.push(cart);
+      return true;
+    }else{
+      return false;
+    }
+  
+  }
 
 
      // set a key/value object

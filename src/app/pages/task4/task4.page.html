@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start"  routerLink="/dashboard" routerDirection="backward" >
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+  </ion-buttons>
+    <ion-title>Product List</ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true" style="--background: #EEEEEE"  >
+  <ion-grid  >  
+    <ion-segment (ionChange)="segmentChanged($event)"  [(ngModel)]="ListType" >
+      <ion-segment-button expand="full" value="listA"   style='text-transform:none;'> 
+        <ion-label>Products A</ion-label>
+      </ion-segment-button>
+      <ion-segment-button expand="full" value="listB"  style='text-transform:none;'>
+        <ion-label>Products B</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-grid>
+  <div *ngIf="ListType==='listA'">
+    <ion-card  *ngFor="let card of dataList; let i = index" (click)="showpopupedit(card)">
+    
+    <ion-grid class="no-padding">
+      <ion-row>
+        <ion-col size="1.5">
+          <h2 class="title">#</h2>
+            <p class="subtitle">{{i+1}}</p>   
+        </ion-col>
+        <ion-col>
+          <h2 class="title">Product Name</h2>
+          <p class="subtitle">{{card.ProductName}}</p>
+        </ion-col>
+        <ion-col size="5">
+          <h2 class="title">Category</h2>
+          <p class="subtitle">{{card.Category}}</p>
+          <span class="arrow">
+            <ion-icon  style="color: black;" name="arrow-forward" ></ion-icon>
+          </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  </div>
+  <div *ngIf="ListType==='listB'">
+    <ion-card  *ngFor="let card of dataList; let i = index" (click)="showpopupedit(card)">
+    
+    <ion-grid class="no-padding">
+      <ion-row>
+        <ion-col size="1.5">
+          <h2 class="title">#</h2>
+            <p class="subtitle">{{i+1}}</p>   
+        </ion-col>
+        <ion-col>
+          <h2 class="title">Product Name</h2>
+          <p class="subtitle">{{card.ProductName}}</p>
+        </ion-col>
+       
+        <ion-col size="5">
+          <h2 class="title">Category</h2>
+          <p class="subtitle">{{card.Category}}</p>
+          <span class="arrow">
+            <ion-icon style="color: black;" name="arrow-forward" ></ion-icon>
+          </span>
+        
+        </ion-col>
+        
+      </ion-row>
+      
+    </ion-grid>
+  
+    
+   
+  
+  </ion-card>
+  
+ 
+   
+  </div>
+</ion-content>
+<!-- <ion-footer>
+ 
+ <ion-row>
+   <ion-col>
+     Points :
+   </ion-col>
+   <ion-col>
+    {{TotalPoints}}
+   </ion-col>
+   </ion-row>
+
+   
+
+</ion-footer> -->
