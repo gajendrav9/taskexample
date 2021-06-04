@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start"  routerLink="/dashboard" routerDirection="backward" >
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+  </ion-buttons>
+    <ion-title>Product List</ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true" style="--background: #EEEEEE"  >
+
+  <div *ngIf="!isInvoiceCreate" style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="createinvoice()" > <ion-icon  name="checkmark"></ion-icon>Create Invoice</button>
+  </div>
+  <ion-row>
+    <ion-col>
+      <div *ngIf="isInvoiceCreate" style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="createinvoice()" > <ion-icon  name="checkmark"></ion-icon>Cancel Invoice</button>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div *ngIf="isInvoiceCreate" style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="saveinvoice()" > <ion-icon  name="checkmark"></ion-icon>Save Invoice</button>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  
+ 
+
+  <ion-card *ngIf="isInvoiceCreate" >
+    
+    <ion-grid class="no-padding">
+      <ion-row>
+        <ion-col>
+          <h2 class="title">Invoice No.</h2>
+          <ngx-barcode [bc-height]=40 [bc-value]="newCreatedInvoice" [bc-display-value]="true"></ngx-barcode>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item margin-bottom>
+            <ion-label  position="floating">Date Of Entry</ion-label>
+            <ion-input [(ngModel)]="formatedDate" readonly type="text" ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size='2'>
+          <div  style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="openCalendar()" > <ion-icon  name="calendar"></ion-icon></button>
+          </div>
+        </ion-col >
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item margin-bottom>
+              <ion-label position="floating">Barcode</ion-label>
+              <ion-input [(ngModel)]="itemBarcode"  type="text" ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size='2'>
+            <div  style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="scan()" > <ion-icon  name="barcode"></ion-icon></button>
+            </div>
+          </ion-col >
+          <ion-col size='2'>
+            <div  style="text-align: center;width:100%">      <button class="sbtbtn" full (click)="createSaleItem()" > <ion-icon  name="checkmark"></ion-icon></button>
+            </div>
+          </ion-col >
+          
+          </ion-row>
+      
+    </ion-grid>
+  
+    
+   
+  
+  </ion-card>
+
+    <ion-card  *ngFor="let card of saleItemList; let i = index">
+    
+    <ion-grid class="no-padding">
+      <ion-row>
+        <ion-col size="1.5">
+          <h2 class="title">#</h2>
+            <p class="subtitle">{{i+1}}</p>   
+        </ion-col>
+        <ion-col>
+          <h2 class="title">Item Barcode</h2>
+          <ngx-barcode [bc-height]=40 [bc-value]="card.itemBarcode" [bc-display-value]="true"></ngx-barcode>
+
+        </ion-col>
+       
+        <ion-col >
+          <h2 class="title">Date of entry</h2>
+          <p class="subtitle">{{card.dateofentry}}</p>
+        </ion-col>
+        
+      </ion-row>
+      
+    </ion-grid>
+  
+    
+   
+  
+  </ion-card>
+  
+ 
+
+</ion-content>

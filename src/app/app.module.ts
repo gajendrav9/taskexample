@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { Storage } from '@ionic/storage';
 //import { HTTP } from '@ionic-native/http/ngx';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+// Calendar UI Module
+import { CalendarModule } from 'ion2-calendar';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,HttpClientModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [Storage,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [BrowserModule,HttpClientModule,CalendarModule, IonicModule.forRoot(), AppRoutingModule],
+  providers: [Storage,BarcodeScanner,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

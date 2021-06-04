@@ -23,6 +23,9 @@ export class DashboardPage implements OnInit {
        { title: "Task 2",path:'/task2', component:'', icon:'assets/icon/list.svg' },
        { title:"Task 3",path:'/task3', component: '', icon:'assets/icon/list.svg' },
        { title:"Task 4",path:'/task4', component: '', icon:'assets/icon/list.svg' },
+       { title:"Task 5",path:'/task5', component: '', icon:'assets/icon/list.svg' },
+       { title:"Task 6",path:'/task6', component: '', icon:'assets/icon/list.svg' },
+
 
      ];
    }

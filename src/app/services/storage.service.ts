@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 export class StorageService {
   itmeList:any[]=[];
   pointCollectList:any[]=[];
+  invoiceList:any[]=[];
   constructor(private storage: Storage)
    {
     console.log('Your storage provider is working here !');
@@ -165,11 +166,56 @@ async addItemStorage(cart:any): Promise<any> {
   }
 
 
-
+  async addInvoiceStorage(cart:any): Promise<any> {
+    try {
+      if(this.invoiceList.length==0)
+      {
+        this.invoiceList.push(cart);
+        console.log("1",this.invoiceList);
+        return true;
+      }else
+      {
+        let added = false;
+      
+        if (!added) {
+          console.log("4",this.invoiceList);
+          this.invoiceList.push(cart);
+          return true;
+        }else{
+          return false;
+        }
+      
+      }
+     
+    } catch (reason) {
+    console.log(reason);
+    return false;
+    }
+    }
+  
 
  
 
 
+
+    async getinvoicelist() {
+      try {
+    
+        console.log("count",this.invoiceList.length);
+       
+        if (this.invoiceList.length != 0) {
+          return this.invoiceList;
+          }else{
+            return null;
+          }
+       console.log("333",JSON.stringify(this.itmeList));
+      return null;
+      } catch (reason) {
+      console.log(reason);
+      return null;
+      }
+      }
+  
     
     // set a key/value object
 

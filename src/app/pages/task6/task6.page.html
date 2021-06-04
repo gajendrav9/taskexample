@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start"  routerLink="/dashboard" routerDirection="backward" >
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+  </ion-buttons>
+    <ion-title>Invoice List</ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true" style="--background: #EEEEEE"  >
+  <ion-row style="background: white;">
+    <ion-col size="4">
+      <ion-select  [(ngModel)]="filterBy">
+        <ion-select-option value="invoicno">Invoice No</ion-select-option>
+        <ion-select-option value="itemcode">Item code</ion-select-option>
+        <ion-select-option value="date">Date</ion-select-option>
+       
+      </ion-select>
+    </ion-col>
+<ion-col size="8">
+  <ion-searchbar
+  [(ngModel)]="searchTerm"
+  (ionChange)="filterItems($event)"
+></ion-searchbar>
+</ion-col>
+  </ion-row>
+ 
+  <ion-card *ngFor="let card of searchAllListArray; let i = index" >
+    
+    <ion-grid class="no-padding">
+      <ion-row>
+        <ion-col>
+          <h2 class="title">Invoice No.</h2>
+          <ngx-barcode [bc-height]=40 [bc-value]="card.invoiceno" [bc-display-value]="true"></ngx-barcode>
+        </ion-col>
+      </ion-row>
+     
+          <ion-row *ngFor="let c of card.itemlist; let i = index">
+            <ion-col size="1.5">
+              <h2 class="title">#</h2>
+                <p class="subtitle">{{i+1}}</p>   
+            </ion-col>
+            <ion-col>
+              <h2 class="title">Item Barcode</h2>
+              <ngx-barcode [bc-height]=20  [bc-value]="c.itemBarcode" [bc-display-value]="true"></ngx-barcode>
+    
+            </ion-col>
+           
+            <ion-col >
+              <h2 class="title">Date of entry</h2>
+              <p class="subtitle">{{c.dateofentry}}</p>
+            </ion-col>
+            
+          </ion-row>
+          
+    </ion-grid>
+  </ion-card>
+  <ion-card style="padding-top: 16px; padding-bottom: 16px;" *ngIf="itemlist.length==0" >
+
+    <ion-grid class="no-padding">
+      <ion-row>
+       <div style="text-align: center;width:100%;">
+         No List Item Found !
+       </div>    
+      </ion-row>
+    </ion-grid>
+   
+  </ion-card>
+ 
+</ion-content>

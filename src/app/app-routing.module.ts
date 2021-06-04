@@ -34,6 +34,14 @@ const routes: Routes = [
   {
     path: 'productdetail',
     loadChildren: () => import('./pages/productdetail/productdetail.module').then( m => m.ProductdetailPageModule)
+  },
+  {
+    path: 'task5',
+    loadChildren: () => import('./pages/task5/task5.module').then( m => m.Task5PageModule)
+  },
+  {
+    path: 'task6',
+    loadChildren: () => import('./pages/task6/task6.module').then( m => m.Task6PageModule)
   }
 ];
 
